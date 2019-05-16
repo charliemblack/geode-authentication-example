@@ -17,6 +17,7 @@
 package demo.geode.authentication;
 
 import org.apache.geode.cache.Region;
+import org.apache.geode.cache.client.ServerOperationException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -31,7 +32,7 @@ public class Tester {
     @Resource
     private Region testRegion;
 
-    @Test
+    @Test(expected = ServerOperationException.class)
     public void insert100() {
         int counter = 0;
         while (counter < 100) {
